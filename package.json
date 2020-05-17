@@ -1,0 +1,23 @@
+{
+  "name": "livraria",
+  "version": "1.0.0",
+  "description": "Livraria do Tio Candinho",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/candinhojr/livraria.git"
+  },
+  "author": "Candinho Luiz Dalla Brida Junior @candinhojr",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/candinhojr/livraria/issues"
+  },
+  "homepage": "https://github.com/candinhojr/livraria#readme",
+  "dependencies": {
+    "express": "4.16.3"
+  }
+}
