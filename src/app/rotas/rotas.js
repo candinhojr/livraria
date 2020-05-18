@@ -36,5 +36,9 @@ module.exports = (app) => {
 
     app.post('/livros', (req, resp) => {
         console.log(req.body);
+        const livroDao = new LivroDao(db); // Criar a instância da classe LivroDao.
+        livroDao.adiciona(req.body)
+            .then(resp.redirect('/livros'))
+            .catch(erro => console.log(erro));
     });
 };
