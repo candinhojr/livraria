@@ -22,28 +22,7 @@
         </header>
         <main class="conteudoPrincipal">
             <div class="container">
-                <h1>Listagem de livros</h1>
-
-                <table id="livros" class="table table-striped table-hover">
-                    <thead class="thead-dark">
-                        <tr>
-                            <td>ID</td>
-                            <td>Título</td>
-                            <td>Preço</td>
-                            <td>Editar</td>
-                            <td>Remover</td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr id="livro_${livro.id}" for (livro in data.livros)>
-                            <td>${livro.id}</td>
-                            <td>${livro.titulo}</td>
-                            <td>${livro.preco}</td>
-                            <td><a href="/livros/form/${livro.id}">Editar</a></td>
-                            <td><a href="#" data-ref="${livro.id}" data-type="remocao">Remover</a></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h1>Livraria - Home</h1>
             </div>
         </main>
         <footer class="rodape">
@@ -61,7 +40,5 @@
                 </div>
             </div>
         </footer>
-
-        <script src="/estatico/js/remove-livro.js"></script>
     </body>
 </html>
