@@ -1,92 +1,28 @@
-const { check, validationResult } = require('express-validator/check');
+const LivroControlador = require('../controladores/LivroControlador');
+const livroControlador = new LivroControlador();
 
-const db = require('../../config/database');
-const LivroDao = require('../infra/LivroDao');
+const BaseControlador = require('../controladores/BaseControlador');
+const baseControlador = new BaseControlador();
+
+const { check } = require('express-validator/check');
 
 module.exports = (app) => {
 
-    app.get('/', (req, resp) => {
+    app.get('/', baseControlador.home());
 
-        resp.marko(
-            require('../views/base/home/home.marko')
-        );
-    });
+    app.get('/livros', livroControlador.lista());
 
-    app.get('/livros', (req, resp) => {
+    app.get('/livros/form', livroControlador.formularioCadastro());
 
-        const livroDao = new LivroDao(db); // Criar a instância da classe LivroDao.
-        livroDao.lista()
-            .then(livros => resp.marko(
-                require('../views/livros/lista/lista.marko'),
-                {
-                    livros: livros
-                }
-            ))
-            .catch(erro => console.log(erro));
-    });
-
-    app.get('/livros/form', (req, resp) => {
-
-        resp.marko(
-            require('../views/livros/form/form.marko'), { livro: {} });
-    });
-
-    app.get('/livros/form/:id', (req, resp) => {
-
-        const { id } = req.params;
-        const livroDao = new LivroDao(db);
-
-        livroDao.buscaPorId(id)
-            .then(livro => 
-                resp.marko(
-                    require('../views/livros/form/form.marko'),
-                    { livro: livro }
-                )
-            )
-            .catch(erro => console.log(erro));
-    });
+    app.get('/livros/form/:id', livroControlador.formularioEdicao());
 
     app.post('/livros', [
         check('titulo').isLength({ min: 5 }).withMessage('O título precisa ter no mínimo 5 caracteres'),
         check('preco').isCurrency().withMessage('O preço precisa ter um valor monetário válido')
-    ], (req, resp) => {
-        console.log(req.body);
-        const livroDao = new LivroDao(db);
+    ],
+    livroControlador.cadastra());
 
-        const erros = validationResult(req);
+    app.put('/livros', livroControlador.edita());
 
-        if(!erros.isEmpty()) {
-            return resp.marko(
-                require('../views/livros/form/form.marko'),
-                { 
-                    livro: req.body,
-                    errosValidacao: erros.array()
-                }
-            );  
-        }
-
-        livroDao.adiciona(req.body)
-            .then(resp.redirect('/livros'))
-            .catch(erro => console.log(erro));
-    });
-
-    app.put('/livros', (req, resp) => {
-
-        console.log(req.body);
-        const livroDao = new LivroDao(db);
-
-        livroDao.atualiza(req.body)
-            .then(resp.redirect('/livros'))
-            .catch(erro => console.log(erro));
-    });
-
-    app.delete('/livros/:id', (req, resp) => {
-
-        const { id } = req.params;
-        const livroDao = new LivroDao(db);
-
-        livroDao.remove(id)
-            .then(() => resp.status(200).end())
-            .catch(erro => console.log(erro));
-    });
+    app.delete('/livros/:id', livroControlador.remove());
 };
