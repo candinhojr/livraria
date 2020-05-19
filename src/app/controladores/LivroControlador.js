@@ -107,6 +107,24 @@ class LivroControlador {
                 .catch(erro => console.log(erro));
         };
     }
+
+    detalha() {
+
+        return (req, resp) => {
+
+            const { id } = req.params;
+            const livroDao = new LivroDao(db);
+
+            livroDao.buscaPorId(id)
+            .then(livro => 
+                resp.marko(
+                    require('../views/livros/form/form.marko'),
+                    { livro: livro }
+                )
+            )
+            .catch(erro => console.log(erro));
+        }
+    }
 }
 
 module.exports = LivroControlador;
