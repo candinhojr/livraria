@@ -19,11 +19,11 @@ function render(input, out, __component, component, state) {
 
   component_globals_tag({}, out);
 
-  out.w("<header class=\"cabecalhoPrincipal\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-4\"><h1 class=\"logo\"><img src=\"/estatico/imagens/logo-casadocodigo.svg\" alt=\"Casa do Código\"></h1></div><div class=\"cabecalhoPrincipal-navegacao col-8\"><a href=\"#\" class=\"login\"><i class=\"fas fa-sign-in-alt\"></i>Login</a></div></div></div></header><main class=\"conteudoPrincipal\"><div class=\"container\"><h1>Livraria - Home</h1><input type=\"button\" onclick=\"location.href='/livros';\" value=\"Listagem de livros\" class=\"btn btn-primary\"><button type=\"button\" class=\"btn btn-primary\"><a href=\"/livros\">Listagem de livros</a></button> </div></main><footer class=\"rodape\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-4\"><img src=\"/estatico/imagens/logo-rodape.svg\" class=\"logo-rodape\"></div><div class=\"col-8\"><ul class=\"redesSociais\"><li><a href=\"https://www.facebook.com/profile.php?id=100002512955401\" class=\"compartilhar-facebook\" target=\"_blank\">/Livraria</a></li><li><a href=\"http://www.twitter.com/candinholuiz\" class=\"compartilhar-twitter\" target=\"_blank\">@livraria</a></li></ul></div></div></div></footer>");
+  out.w("<header class=\"cabecalhoPrincipal\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-4\"><h1 class=\"logo\"><img src=\"/estatico/imagens/logo-casadocodigo.svg\" alt=\"Casa do Código\"></h1></div><div class=\"cabecalhoPrincipal-navegacao col-8\"><a href=\"#\" class=\"login\"><i class=\"fas fa-sign-in-alt\"></i>Login</a></div></div></div></header><main class=\"conteudoPrincipal\"><div class=\"container\"><h1>Livraria - Home</h1><input type=\"button\" onclick=\"location.href='/livros';\" value=\"Listagem de livros\" class=\"btn btn-primary\"></div></main><footer class=\"rodape\"><div class=\"container\"><div class=\"row align-items-center\"><div class=\"col-4\"><img src=\"/estatico/imagens/logo-rodape.svg\" class=\"logo-rodape\"></div><div class=\"col-8\"><ul class=\"redesSociais\"><li><a href=\"https://www.facebook.com/profile.php?id=100002512955401\" class=\"compartilhar-facebook\" target=\"_blank\">/Livraria</a></li><li><a href=\"http://www.twitter.com/candinholuiz\" class=\"compartilhar-twitter\" target=\"_blank\">@livraria</a></li></ul></div></div></div></footer>");
 
   init_components_tag({}, out);
 
-  await_reorderer_tag({}, out, __component, "33");
+  await_reorderer_tag({}, out, __component, "31");
 
   out.w("</body></html>");
 }
