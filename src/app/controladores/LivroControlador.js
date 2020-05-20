@@ -35,7 +35,7 @@ class LivroControlador {
 
     cadastra() {
 
-        return  (req, resp) => {
+        return (req, resp) => {
             console.log(req.body);
             const livroDao = new LivroDao(db);
     

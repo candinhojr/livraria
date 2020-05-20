@@ -6,6 +6,8 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride= require('method-override');
 
+const templates = require('../app/views/templates');
+
 app.use('/estatico', express.static('src/app/public'));
 
 app.use(bodyParser.urlencoded({
@@ -27,13 +29,13 @@ rotas(app);
 
 app.use((req, resp, next) => {
     return resp.status(404).marko(
-        require('../app/views/base/erros/404.marko')
+        templates.base.erro404
     );
 });
 
 app.use((erro, req, resp, next) => {
     return resp.status(500).marko(
-        require('../app/views/base/erros/500.marko')
+        templates.base.erro500
     );
 });
 
