@@ -9,8 +9,12 @@ module.exports = (app) => {
     const rotasLivro = LivroControlador.rotas();
 
     app.use(rotasLivro.autenticadas, (req, resp, next) => {
-        if (req.isAuthenticated()) next;
-        else resp.redirect(BaseControlador.rotas().login);
+        if (req.isAuthenticated()) {
+            next()
+        } 
+        else {
+            resp.redirect(BaseControlador.rotas().login);
+        } 
     });
 
     app.get(rotasLivro.lista, livroControlador.lista());

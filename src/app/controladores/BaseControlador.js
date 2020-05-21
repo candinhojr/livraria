@@ -37,7 +37,7 @@ class BaseControlador {
             // Lógica de autenticação
             const passport = req.passport;
             passport.authenticate('local', (erro, usuario, info) => {
-
+                
                 if (info) return resp.marko(templates.base.login);
 
                 if (erro) return next(erro);
