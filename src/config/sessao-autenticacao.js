@@ -16,7 +16,7 @@ module.exports = (app) => {
         },
         (email, senha, done) => {
             const usuarioDao = new UsuarioDao(db);
-            usuarioDao.buscaPorId(email)
+            usuarioDao.buscaPorEmail(email)
                 .then(usuario => {
                     if (!usuario || senha != usuario.senha) {
                         return done(null, false, {
