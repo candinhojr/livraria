@@ -1,16 +1,16 @@
 const LivroControlador = require('../controladores/LivroControlador');
 const livroControlador = new LivroControlador();
 
-const Livro = require('../modelos/livro');
-
 const BaseControlador = require('../controladores/BaseControlador');
+
+const Livro = require('../modelos/livro');
 
 module.exports = (app) => {
     const rotasLivro = LivroControlador.rotas();
 
     app.use(rotasLivro.autenticadas, (req, resp, next) => {
         if (req.isAuthenticated()) {
-            next()
+            next();
         } 
         else {
             resp.redirect(BaseControlador.rotas().login);
